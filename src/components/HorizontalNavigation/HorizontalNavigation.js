@@ -4,9 +4,9 @@ import './HorizontalNavigation.css'
 
 function HorizontalNavigation () {
     return (
-        <header className="kasa-header">
-            <img src={logo} className="kasa-sportsee" alt="logo"></img>
-            <nav className="sportsee-navbar">
+        <header className="header-nav">
+            <img src={logo} className="sportsee-logo" alt="logo"></img>
+            <nav className="horizontal-navbar">
                 <NavLink end to="/" className="sportsee-link">
                     Accueil
                 </NavLink>

@@ -1,0 +1,45 @@
+.sportsee-vertical-navbar {
+    display: flex;
+    flex-direction: column;
+    width: 117px;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+}
+
+.sportsee-vertical-navbar nav {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.sportsee-vertical-navbar ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40%;
+    margin-bottom: 30%;
+    padding: 0;
+}
+
+.sportsee-vertical-navbar li {
+    margin: 5px auto;
+}
+
+.sportsee-icon {
+    width:64px;
+}
+
+.sportsee-copiryght {
+    display: flex;
+    height: 50%;
+    margin-bottom: 20px;
+}
+
+.sportsee-copiryght p {
+    font-size: 12px;
+    color: white;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-left: 45%;
+}
