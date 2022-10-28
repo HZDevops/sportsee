@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import "./HeaderDashboard.css";
 
-function HeaderDashboard({ firstName }) {
-  const [userData, setUserData] = useState({});
-  const [isDataLoading, setDataLoading] = useState(false);
+function HeaderDashboard(firstname) {
   return (
-    <div className="header-home">
+    <div className="header-dashboard">
       <h1>
-        Bonjour <span className="first-name">{firstName}</span>
+        Bonjour <span className="first-name">{firstname}</span>
       </h1>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </div>

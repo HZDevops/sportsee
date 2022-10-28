@@ -1,9 +1,11 @@
-.header-home {
-    width: 100%;
+.header-dashboard {
+    width: 369px;
     margin-bottom: 40px;
+    margin-left: 250px;
+    margin-top: 50px;
 }
 
-.header-home h1 {
+.header-dashboard h1 {
     margin: 20px 0px 20px 0px;
 }
 

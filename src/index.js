@@ -1,26 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HeaderDashboard from './components/HeaderDashboard/HeaderDashboard';
-import HorizontalNavigation from './components/HorizontalNavigation/HorizontalNavigation';
-import VerticalNavigation from './components/VerticalNavigation/VerticalNavigation';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HorizontalNavigation from "./components/HorizontalNavigation/HorizontalNavigation";
+import VerticalNavigation from "./components/VerticalNavigation/VerticalNavigation";
+import Home from "./pages/Home/Home";
+import "./index.css";
 
-import './index.css';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <HorizontalNavigation />
       <VerticalNavigation />
-      <HeaderDashboard />
       <Routes>
-        <Route path="/"  />
-        <Route path="/profil"  />
-        <Route path="/reglage"  />
-        <Route path="/communauté" />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   </React.StrictMode>
 );
-
