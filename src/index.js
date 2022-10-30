@@ -13,7 +13,7 @@ root.render(
       <HorizontalNavigation />
       <VerticalNavigation />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/:userId" element={<Home />} />
       </Routes>
     </Router>
   </React.StrictMode>

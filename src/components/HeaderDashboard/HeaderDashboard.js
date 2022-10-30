@@ -1,6 +1,6 @@
 import "./HeaderDashboard.css";
 
-function HeaderDashboard(firstname) {
+function HeaderDashboard({ firstname }) {
   return (
     <div className="header-dashboard">
       <h1>
