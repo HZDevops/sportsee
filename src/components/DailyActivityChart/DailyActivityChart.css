@@ -1,0 +1,25 @@
+.activity-chart {
+    width:835px;
+    height: 320px;
+    position: relative;
+    margin-left: 250px;
+    background: #FBFBFB;
+    border-radius: 5px;
+}
+
+.activity-chart  h2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;    
+}
+
+.daily-chart-tooltip {
+    background-color: #E60000;
+    color: white;
+    font-size: 8px;
+    padding: 2.5px;
+}
+
+.daily-chart-tooltip p {
+    padding: 2.5px;
+}
