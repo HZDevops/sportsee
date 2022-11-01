@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import HorizontalNavigation from "./components/HorizontalNavigation/HorizontalNavigation";
 import VerticalNavigation from "./components/VerticalNavigation/VerticalNavigation";
-import Home from "./pages/Home/Home";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,7 +19,7 @@ root.render(
       <VerticalNavigation />
       <Routes>
         <Route exact path="/" element={<Navigate to="/12" />} />
-        <Route path="/:userId" element={<Home />} />
+        <Route path="/:userId" element={<Dashboard />} />
       </Routes>
     </Router>
   </React.StrictMode>

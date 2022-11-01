@@ -1,6 +1,11 @@
+import useSportSeeApi from "../../utils/hook/useSportSeeApi";
+import getUserFirstName from "../../utils/services/getUserFirstName";
 import "./HeaderDashboard.css";
 
-function HeaderDashboard({ firstname }) {
+function HeaderDashboard({ userId }) {
+  const userInfoData = useSportSeeApi(userId);
+  const firstname = getUserFirstName(userInfoData);
+
   return (
     <div className="header-dashboard">
       <h1>
