@@ -6,7 +6,7 @@ import "./KeyDataCard.css";
 
 function KeyDataCard({ keydata }) {
   return (
-    <aside>
+    <div className="keydata-container">
       <div className="keydata-card">
         <img className="icon" src={caloriesIcon} alt="calorie icon" />
         <div className="keydata-content">
@@ -35,7 +35,7 @@ function KeyDataCard({ keydata }) {
           <span>Lipides</span>
         </div>
       </div>
-    </aside>
+    </div>
   );
 }
 export default KeyDataCard;

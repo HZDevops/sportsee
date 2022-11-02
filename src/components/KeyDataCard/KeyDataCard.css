@@ -1,10 +1,21 @@
+.keydata-container {
+    width: 258px;
+    position:relative;
+    bottom: 320px;
+    left: 1000px;
+}
+
 .keydata-card {
+    width:258px;
+    height: 124px;
+    border-radius:5px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #FBFBFB;
     padding: 10px;
     margin-left: 20px;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 50px;
 }
 
 .keydata-content {

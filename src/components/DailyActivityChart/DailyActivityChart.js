@@ -52,7 +52,7 @@ function DailyActivityChart({ userId }) {
 
   return (
     <div className="activity-chart">
-      <h2>Acitvité quotidienne</h2>
+      <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={activities}
