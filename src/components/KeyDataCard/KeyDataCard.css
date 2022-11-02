@@ -1,0 +1,22 @@
+.keydata-card {
+    display: flex;
+    background-color: #FBFBFB;
+    padding: 10px;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.keydata-content {
+    margin: 0px 10px 0px 10px;
+}
+
+.keydata-content p {
+    font-weight: bold;
+    margin: 5px 0px 5px 0px;
+    font-size: 14px;
+}
+
+.keydata-content span {
+    color:#74798C;
+}
