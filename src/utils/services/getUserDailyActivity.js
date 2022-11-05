@@ -1,9 +1,9 @@
 /**
- * Get user activities from data API
- * @param {Array} userData - user data from fetch API
- * @returns {Array} - user's daily activity
+ * Extract user activities from API data
+ * @param {Array} userActivityData - user activities from API
+ * @returns {Array} - user's daily activities
  */
-function getUserDailyActivity(userData) {
-  return userData?.serviceData?.data?.sessions;
+function getUserDailyActivity(userActivityData) {
+  return userActivityData?.data?.sessions;
 }
 export default getUserDailyActivity;

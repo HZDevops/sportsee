@@ -1,4 +1,6 @@
-import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
+import axios from "axios";
+import { useState, useEffect } from "react";
+//import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
 import getUserDailyActivity from "../../utils/services/getUserDailyActivity";
 import {
   BarChart,
@@ -46,11 +48,31 @@ const CustomLegendText = (value) => {
 };
 
 function DailyActivityChart({ userId }) {
-  //Get daily user activity data from API
-  const userActivityData = useSportSeeApiServices(userId, "activity");
-  const activities = getUserDailyActivity(userActivityData);
+  const [activityData, setActivityData] = useState({});
+  const [isActivityLoading, setActivityLoading] = useState(false);
+  const [activityError, setActivityError] = useState(false);
 
-  return (
+  // Fetch user activities from API
+  useEffect(() => {
+    setActivityLoading(true);
+    axios
+      .get(`http://localhost:3000/user/${userId}/activity`)
+      .then((response) => {
+        setActivityData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setActivityError(true);
+      })
+      .finally(() => {
+        setActivityLoading(false);
+      });
+  }, [userId]);
+  //const activityData = useSportSeeApiServices(userId, "activity");
+
+  const activities = getUserDailyActivity(activityData);
+
+  return activities ? (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="100%" height="100%">
@@ -108,6 +130,8 @@ function DailyActivityChart({ userId }) {
         </BarChart>
       </ResponsiveContainer>
     </div>
+  ) : (
+    ""
   );
 }
 export default DailyActivityChart;
