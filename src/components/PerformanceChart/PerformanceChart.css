@@ -1,0 +1,10 @@
+.radar-bar-chart {
+    width: 258px;
+    height: 263px;
+    background-color: #282D30;
+    border-radius: 5px;
+}
+
+.radar-bar-chart text {
+    font-size: 12px;
+}
