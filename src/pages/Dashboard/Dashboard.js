@@ -5,6 +5,7 @@ import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import SessionDurationChart from "../../components/SessionDurationCart.js/SessionDurationChart";
 import PerformanceChart from "../../components/PerformanceChart/PerformanceChart";
+import ScoreChart from "../../components/ScoreChart/ScoreChart";
 import KeyDataCard from "../../components/KeyDataCard/KeyDataCard";
 import "./Dashboard.css";
 
@@ -16,6 +17,7 @@ function Dashboard() {
   //Get user first-name and keydata
   const userFirstname = getUserMainData(userMainData).firstname;
   const userKeydata = getUserMainData(userMainData).keydata;
+  const userScore = getUserMainData(userMainData).score;
 
   return (
     <main>
@@ -24,6 +26,7 @@ function Dashboard() {
       <section className="charts">
         <SessionDurationChart userId={userId} />
         <PerformanceChart userId={userId} />
+        {userScore ? <ScoreChart score={userScore} /> : ""}
       </section>
       {userKeydata ? <KeyDataCard keydata={userKeydata} /> : ""}
     </main>

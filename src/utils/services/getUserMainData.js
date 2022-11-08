@@ -6,6 +6,7 @@
 function getUserMainData(userInfoData) {
   const firstname = userInfoData?.userData?.data?.userInfos?.firstName;
   const keydata = userInfoData?.userData?.data?.keyData;
-  return { firstname, keydata };
+  const score = userInfoData?.userData?.data?.todayScore;
+  return { firstname, keydata, score };
 }
 export default getUserMainData;
