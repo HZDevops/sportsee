@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "../../data/mockedData";
 
 /**
  * Hook used to extract data from SportSeeAPI to feed the dashboard.

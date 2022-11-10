@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useSportSeeApi from "../../utils/hook/useSportSeeApi";
+//import getUserMainData from "../../utils/mockedAPI";
 import getUserMainData from "../../utils/services/getUserMainData";
 import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
@@ -11,6 +12,8 @@ import "./Dashboard.css";
 
 function Dashboard() {
   let { userId } = useParams();
+
+  //  const userFirstname = getUserMainData(userId);
 
   const userMainData = useSportSeeApi(userId);
 
