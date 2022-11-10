@@ -8,6 +8,7 @@ import SessionDurationChart from "../../components/SessionDurationCart.js/Sessio
 import PerformanceChart from "../../components/PerformanceChart/PerformanceChart";
 import ScoreChart from "../../components/ScoreChart/ScoreChart";
 import KeyDataCard from "../../components/KeyDataCard/KeyDataCard";
+import Error404 from "../Error404/Error404";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -22,16 +23,23 @@ function Dashboard() {
   const userKeydata = getUserMainData(userMainData).keydata;
   const userScore = getUserMainData(userMainData).score;
 
+  if (userMainData.error) {
+    return (
+      <main>
+        <Error404 />
+      </main>
+    );
+  }
   return (
     <main>
-      {userFirstname ? <HeaderDashboard firstname={userFirstname} /> : ""}
+      <HeaderDashboard firstname={userFirstname} />
       <DailyActivityChart userId={userId} />
       <section className="charts">
         <SessionDurationChart userId={userId} />
         <PerformanceChart userId={userId} />
-        {userScore ? <ScoreChart score={userScore} /> : ""}
+        <ScoreChart score={userScore} />
       </section>
-      {userKeydata ? <KeyDataCard keydata={userKeydata} /> : ""}
+      <KeyDataCard keydata={userKeydata} />
     </main>
   );
 }
