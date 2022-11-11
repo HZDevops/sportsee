@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 //import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
-import getUserAverageSessions from "../../utils/services/getUserAverageSessions";
+//import getUserAverageSessions from "../../utils/services/getUserAverageSessions";
+import { getUserAverageSessionsMocked } from "../../utils/mock/mockedAPI.js";
 import { LineChart, XAxis, Line, Tooltip, ResponsiveContainer } from "recharts";
 import "./SessionDurationChart.css";
 
@@ -45,8 +46,12 @@ function SessionDurationChart({ userId }) {
         setSessionLoading(false);
       });
   }, [userId]);
+
   //const sessionData = useSportSeeApiServices(userId, "average-sessions");
-  const userSession = getUserAverageSessions(sessionData);
+
+  //const userSession = getUserAverageSessions(sessionData);
+
+  const userSession = getUserAverageSessionsMocked(userId);
 
   // replace the number index with the day index
   const days = { 1: "L", 2: "M", 3: "M", 4: "J", 5: "V", 6: "S", 7: "D" };
@@ -61,7 +66,7 @@ function SessionDurationChart({ userId }) {
   return (
     <div className="average-duration-chart">
       <h2>Durée moyenne des sessions</h2>
-      <ResponsiveContainer width="100%" height="99%">
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={userSession}>
           <Tooltip
             wrapperStyle={{ left: -10 }}

@@ -1,5 +1,5 @@
 /**
- * Extract user activities from API data
+ * Get user activities from API data
  * @param {Array} userActivityData - user activities from API
  * @returns {Array} - user's daily activities
  */

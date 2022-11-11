@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import getUserPerformance from "../../utils/services/getUserPerformance";
+//import getUserPerformance from "../../utils/services/getUserPerformance";
+import { getUserPerformanceMocked } from "../../utils/mock/mockedAPI.js";
 import {
   Radar,
   RadarChart,
@@ -32,7 +33,8 @@ function PerformanceChart({ userId }) {
       });
   }, [userId]);
 
-  const performances = getUserPerformance(performanceData);
+  //const performances = getUserPerformance(performanceData);
+  const performances = getUserPerformanceMocked(userId);
 
   return (
     <div className="radar-bar-chart">
