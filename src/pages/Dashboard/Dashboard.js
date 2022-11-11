@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useSportSeeApi from "../../utils/hook/useSportSeeApi";
-//import getUserMainData from "../../utils/mockedAPI";
-import getUserMainData from "../../utils/services/getUserMainData";
+import { getUserMainDataMocked } from "../../utils/mock/mockedAPI.js";
+//import getUserMainData from "../../utils/services/getUserMainData";
 import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import SessionDurationChart from "../../components/SessionDurationCart.js/SessionDurationChart";
@@ -14,16 +14,25 @@ import "./Dashboard.css";
 function Dashboard() {
   let { userId } = useParams();
 
-  //  const userFirstname = getUserMainData(userId);
+  const userFirstname = getUserMainDataMocked(userId).firstname;
+  const userKeydata = getUserMainDataMocked(userId).keydata;
+  const userScore = getUserMainDataMocked(userId).score;
 
-  const userMainData = useSportSeeApi(userId);
+  //const userMainData = useSportSeeApi(userId);
 
   //Get user first-name and keydata
-  const userFirstname = getUserMainData(userMainData).firstname;
+  /*const userFirstname = getUserMainData(userMainData).firstname;
   const userKeydata = getUserMainData(userMainData).keydata;
-  const userScore = getUserMainData(userMainData).score;
+  const userScore = getUserMainData(userMainData).score;*/
 
-  if (userMainData.error) {
+  /*if (userMainData.error) {
+    return (
+      <main>
+        <Error404 />
+      </main>
+    );
+  }*/
+  if (!userFirstname) {
     return (
       <main>
         <Error404 />

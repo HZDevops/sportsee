@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 //import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
 import getUserDailyActivity from "../../utils/services/getUserDailyActivity";
+import { getUserDailyActivityMocked } from "../../utils/mock/mockedAPI.js";
 import {
   BarChart,
   Bar,
@@ -48,7 +49,7 @@ const CustomLegendText = (value) => {
 };
 
 function DailyActivityChart({ userId }) {
-  const [activityData, setActivityData] = useState({});
+  /*const [activityData, setActivityData] = useState({});
   const [isActivityLoading, setActivityLoading] = useState(false);
   const [activityError, setActivityError] = useState(false);
 
@@ -70,7 +71,8 @@ function DailyActivityChart({ userId }) {
   }, [userId]);
   //const activityData = useSportSeeApiServices(userId, "activity");
 
-  const activities = getUserDailyActivity(activityData);
+  const activities = getUserDailyActivity(activityData);*/
+  const activities = getUserDailyActivityMocked(userId);
 
   return activities ? (
     <div className="activity-chart">
