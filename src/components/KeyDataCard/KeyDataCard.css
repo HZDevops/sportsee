@@ -1,8 +1,9 @@
 .keydata-container {
-    width: 258px;
+    display: flex;
+    flex-direction: column;
     position:relative;
     margin-left: 20px;
-    bottom: 633px;
+    bottom: 608px;
     left: 1000px;
 }
 
@@ -16,7 +17,7 @@
     background-color: #FBFBFB;
     padding: 10px;
     margin-left: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 39px;
 }
 
 .keydata-content {

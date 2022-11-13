@@ -1,50 +1,41 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-//import getUserPerformance from "../../utils/services/getUserPerformance";
+import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { getUserPerformance } from "../../utils/services/postApiService";
 import { getUserPerformanceMocked } from "../../utils/mock/mockedAPI.js";
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  ResponsiveContainer,
-} from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
+import Error404 from "../../pages/Error404/Error404";
 import "./PerformanceChart.css";
 
-function PerformanceChart({ userId }) {
-  const [performanceData, setPerformanceData] = useState({});
-  const [isPerformanceLoading, setPerformanceLoading] = useState(false);
-  const [performanceError, setPerformanceError] = useState(false);
+function PerformanceChart({ id }) {
+  const { data, error } = useSportSeeApi(id, "performance");
 
-  // Fetch user activities from API
-  useEffect(() => {
-    setPerformanceLoading(true);
-    axios
-      .get(`http://localhost:3000/user/${userId}/performance`)
-      .then((response) => {
-        setPerformanceData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setPerformanceError(true);
-      })
-      .finally(() => {
-        setPerformanceLoading(false);
-      });
-  }, [userId]);
+  if (error) {
+    return (
+      <div className="radar-bar-chart">
+        <Error404 />
+      </div>
+    );
+  }
 
-  //const performances = getUserPerformance(performanceData);
-  const performances = getUserPerformanceMocked(userId);
+  //Get user performances from API data
+  const performances = getUserPerformance(data);
+
+  //Extract performances from mocked data
+  //const performances = getUserPerformanceMocked(id);
 
   return (
     <div className="radar-bar-chart">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={performances}>
-          <PolarGrid />
-          <PolarAngleAxis tickLine={false} stroke="white" dataKey="kind" />
-          <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
-        </RadarChart>
-      </ResponsiveContainer>
+      <RadarChart
+        width={253}
+        height={268}
+        cx="50%"
+        cy="50%"
+        outerRadius="70%"
+        data={performances}
+      >
+        <PolarGrid />
+        <PolarAngleAxis tickLine={false} stroke="white" dataKey="kind" />
+        <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
+      </RadarChart>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import useSportSeeApi from "../../utils/hook/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { getUserFirstname } from "../../utils/services/postApiService";
 import { getUserMainDataMocked } from "../../utils/mock/mockedAPI.js";
-//import getUserMainData from "../../utils/services/getUserMainData";
+
 import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import SessionDurationChart from "../../components/SessionDurationCart.js/SessionDurationChart";
@@ -12,43 +13,36 @@ import Error404 from "../Error404/Error404";
 import "./Dashboard.css";
 
 function Dashboard() {
+  //Get user id from URL
   let { userId } = useParams();
 
-  const userFirstname = getUserMainDataMocked(userId).firstname;
-  const userKeydata = getUserMainDataMocked(userId).keydata;
-  const userScore = getUserMainDataMocked(userId).score;
+  //Get user main data from SportSee API
+  const { data, error } = useSportSeeApi(userId);
 
-  //const userMainData = useSportSeeApi(userId);
-
-  //Get user first-name and keydata
-  /*const userFirstname = getUserMainData(userMainData).firstname;
-  const userKeydata = getUserMainData(userMainData).keydata;
-  const userScore = getUserMainData(userMainData).score;*/
-
-  /*if (userMainData.error) {
-    return (
-      <main>
-        <Error404 />
-      </main>
-    );
-  }*/
-  if (!userFirstname) {
+  if (error) {
     return (
       <main>
         <Error404 />
       </main>
     );
   }
+
+  //Get user firstname from API data
+  const userFirstname = getUserFirstname(data);
+
   return (
     <main>
       <HeaderDashboard firstname={userFirstname} />
-      <DailyActivityChart userId={userId} />
+
       <section className="charts">
-        <SessionDurationChart userId={userId} />
-        <PerformanceChart userId={userId} />
-        <ScoreChart score={userScore} />
+        <DailyActivityChart id={userId} />
+        <div className="specific-charts">
+          <SessionDurationChart id={userId} />
+          <PerformanceChart id={userId} />
+          <ScoreChart id={userId} />
+        </div>
       </section>
-      <KeyDataCard keydata={userKeydata} />
+      <KeyDataCard id={userId} />
     </main>
   );
 }

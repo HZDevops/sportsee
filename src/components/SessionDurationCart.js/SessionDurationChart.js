@@ -1,9 +1,8 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-//import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
-//import getUserAverageSessions from "../../utils/services/getUserAverageSessions";
+import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { getUserAverageSessions } from "../../utils/services/postApiService";
 import { getUserAverageSessionsMocked } from "../../utils/mock/mockedAPI.js";
-import { LineChart, XAxis, Line, Tooltip, ResponsiveContainer } from "recharts";
+import { LineChart, XAxis, Line, Tooltip } from "recharts";
+import Error404 from "../../pages/Error404/Error404";
 import "./SessionDurationChart.css";
 
 /**
@@ -25,70 +24,48 @@ function CustomTooltip({ payload, active }) {
   return null;
 }
 
-function SessionDurationChart({ userId }) {
-  const [sessionData, setSessionData] = useState({});
-  const [isSessionLoading, setSessionLoading] = useState(false);
-  const [sessionError, setSessionError] = useState(false);
+function SessionDurationChart({ id }) {
+  //Get average sessions data from SportSee API
+  const { data, error } = useSportSeeApi(id, "average-sessions");
 
-  // Fetch user activities from API
-  useEffect(() => {
-    setSessionLoading(true);
-    axios
-      .get(`http://localhost:3000/user/${userId}/average-sessions`)
-      .then((response) => {
-        setSessionData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setSessionError(true);
-      })
-      .finally(() => {
-        setSessionLoading(false);
-      });
-  }, [userId]);
-
-  //const sessionData = useSportSeeApiServices(userId, "average-sessions");
-
-  //const userSession = getUserAverageSessions(sessionData);
-
-  const userSession = getUserAverageSessionsMocked(userId);
-
-  // replace the number index with the day index
-  const days = { 1: "L", 2: "M", 3: "M", 4: "J", 5: "V", 6: "S", 7: "D" };
-  if (userSession) {
-    for (let element of userSession) {
-      if (element.day in days) {
-        element.day = days[element.day];
-      }
-    }
+  if (error) {
+    return (
+      <div className="average-duration-chart">
+        <Error404 />
+      </div>
+    );
   }
+
+  //Extract user sessions from API data
+  const sessions = getUserAverageSessions(data);
+
+  //Extract sessions from mocked data
+  //const sessions = getUserAverageSessionsMocked(userId);
 
   return (
     <div className="average-duration-chart">
       <h2>Durée moyenne des sessions</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={userSession}>
-          <Tooltip
-            wrapperStyle={{ left: -10 }}
-            cursor={{ stroke: "rgba(0, 0, 0, 0.1)", strokeWidth: 100 }}
-            content={<CustomTooltip />}
-          />
-          <XAxis
-            tick={{ opacity: 0.5 }}
-            tickLine={false}
-            axisLine={false}
-            stroke="white"
-            dataKey="day"
-          />
-          <Line
-            type="monotone"
-            dataKey="sessionLength"
-            stroke="white"
-            strokeOpacity="0.5"
-            dot=""
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <LineChart data={sessions} width={253} height={268}>
+        <Tooltip
+          wrapperStyle={{ left: -10 }}
+          cursor={{ stroke: "rgba(0, 0, 0, 0.1)", strokeWidth: 100 }}
+          content={<CustomTooltip />}
+        />
+        <XAxis
+          tick={{ opacity: 0.5 }}
+          tickLine={false}
+          axisLine={false}
+          stroke="white"
+          dataKey="day"
+        />
+        <Line
+          type="monotone"
+          dataKey="sessionLength"
+          stroke="white"
+          strokeOpacity="0.5"
+          dot=""
+        />
+      </LineChart>
     </div>
   );
 }

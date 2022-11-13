@@ -5,16 +5,49 @@ import {
   USER_PERFORMANCE,
 } from "./mockedData";
 
-export function getUserMainDataMocked(userId) {
+/**
+ * Get user main information from data API
+ * @param {String} userId - user id
+ * @returns {Object} - user main information
+ */
+export function getUserFirstname(userId) {
   for (let user of USER_MAIN_DATA) {
     if (user.id === parseInt(userId)) {
       let firstname = user.userInfos.firstName;
-      let keydata = user.keyData;
-      let score = user.todayScore;
-      return { firstname, keydata, score };
+      return firstname;
     }
   }
-  return "Unknown User";
+}
+
+/**
+ * Get user keydata from mocked data
+ * @param {String} userId - user id
+ * @returns {Object} - user's keydata
+ */
+export function getUserKeydataMocked(userId) {
+  for (let user of USER_MAIN_DATA) {
+    if (user.id === parseInt(userId)) {
+      let keydata = user.keyData;
+      return keydata;
+    }
+  }
+}
+
+/**
+ * Get user score from mocked data
+ * @param {String} userId - user id
+ * @returns {Object} - user's score
+ */
+export function getUserScoreMocked(userId) {
+  for (let user of USER_MAIN_DATA) {
+    if (user.id === parseInt(userId)) {
+      if (user.todayScore) {
+        return user.todayScore;
+      } else {
+        return user.score;
+      }
+    }
+  }
 }
 
 /**

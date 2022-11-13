@@ -1,7 +1,5 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-//import useSportSeeApiServices from "../../utils/hook/useSportSeeApiServices";
-import getUserDailyActivity from "../../utils/services/getUserDailyActivity";
+import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { getUserDailyActivity } from "../../utils/services/postApiService";
 import { getUserDailyActivityMocked } from "../../utils/mock/mockedAPI.js";
 import {
   BarChart,
@@ -13,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Error404 from "../../pages/Error404/Error404";
 import "./DailyActivityChart.css";
 
 /**
@@ -48,33 +47,25 @@ const CustomLegendText = (value) => {
   );
 };
 
-function DailyActivityChart({ userId }) {
-  /*const [activityData, setActivityData] = useState({});
-  const [isActivityLoading, setActivityLoading] = useState(false);
-  const [activityError, setActivityError] = useState(false);
+function DailyActivityChart({ id }) {
+  //Get daily activities data from SportSee API
+  const { data, error } = useSportSeeApi(id, "activity");
 
-  // Fetch user activities from API
-  useEffect(() => {
-    setActivityLoading(true);
-    axios
-      .get(`http://localhost:3000/user/${userId}/activity`)
-      .then((response) => {
-        setActivityData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setActivityError(true);
-      })
-      .finally(() => {
-        setActivityLoading(false);
-      });
-  }, [userId]);
-  //const activityData = useSportSeeApiServices(userId, "activity");
+  if (error) {
+    return (
+      <div className="activity-chart">
+        <Error404 />
+      </div>
+    );
+  }
 
-  const activities = getUserDailyActivity(activityData);*/
-  const activities = getUserDailyActivityMocked(userId);
+  //Extract activities from API data
+  const activities = getUserDailyActivity(data);
 
-  return activities ? (
+  //Extract activities from mocked data
+  //const activities = getUserDailyActivityMocked(id);
+
+  return (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="100%" height="100%">
@@ -132,8 +123,6 @@ function DailyActivityChart({ userId }) {
         </BarChart>
       </ResponsiveContainer>
     </div>
-  ) : (
-    ""
   );
 }
 export default DailyActivityChart;

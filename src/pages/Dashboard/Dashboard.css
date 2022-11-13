@@ -1,4 +1,10 @@
 .charts {
     width: 835px;
     display: flex;
+    flex-direction: column;
+}
+.specific-charts{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }

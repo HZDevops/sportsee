@@ -1,14 +1,35 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { getUserScore } from "../../utils/services/postApiService";
+import { getUserScoreMocked } from "../../utils/mock/mockedAPI";
+import { PieChart, Pie, Cell } from "recharts";
+import Error404 from "../../pages/Error404/Error404";
 import "./ScoreChart.css";
 
-function ScoreChart({ score }) {
-  const data = [{ name: "completed", value: score, fill: "#FF0101" }];
+function ScoreChart({ id }) {
+  //Get score data from SportSee API
+  const { data, error } = useSportSeeApi(id);
+
+  if (error) {
+    return (
+      <div className="radar-bar-chart">
+        <Error404 />
+      </div>
+    );
+  }
+
+  //Extract user score from API data
+  const score = getUserScore(data);
+
+  //Extract score from mocked data
+  //const score = getUserScoreMocked(id);
+
+  const pieData = [{ name: "completed", value: score, fill: "#FF0101" }];
 
   return (
     <div className="score-chart">
       <PieChart width={258} height={263}>
         <Pie
-          data={data}
+          data={pieData}
           title="test"
           startAngle={90}
           endAngle={90 + score * 360}
