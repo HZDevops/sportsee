@@ -1,4 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserKeydata } from "../../utils/services/postApiService";
 import { getUserKeyadataMocked } from "../../utils//mock/mockedAPI.js";
 import caloriesIcon from "../../assets/calories-icon.png";

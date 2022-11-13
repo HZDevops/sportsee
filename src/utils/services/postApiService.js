@@ -15,7 +15,19 @@ export function getUserFirstname(data) {
  * @returns {Array} - user's daily activities
  */
 export function getUserDailyActivity(data) {
-  return data?.data?.sessions;
+  //return data?.data?.sessions;
+  const dailyActivity = [];
+
+  data?.data?.sessions.forEach((element) => {
+    const [yyyy, mm, dd] = element.day.split("-");
+
+    dailyActivity.push({
+      day: `${dd}`,
+      kilogram: element.kilogram,
+      calories: element.calories,
+    });
+  });
+  return dailyActivity;
 }
 
 /**

@@ -1,4 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserAverageSessions } from "../../utils/services/postApiService";
 import { getUserAverageSessionsMocked } from "../../utils/mock/mockedAPI.js";
 import { LineChart, XAxis, Line, Tooltip } from "recharts";

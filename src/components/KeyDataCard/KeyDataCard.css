@@ -1,10 +1,10 @@
 .keydata-container {
-    display: flex;
-    flex-direction: column;
-    position:relative;
+    position: relative;
     margin-left: 20px;
-    bottom: 608px;
+    bottom: 590px;
     left: 1000px;
+    height: 600px;
+    width: 300px;
 }
 
 .keydata-card {

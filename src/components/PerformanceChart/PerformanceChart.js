@@ -1,4 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserPerformance } from "../../utils/services/postApiService";
 import { getUserPerformanceMocked } from "../../utils/mock/mockedAPI.js";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";

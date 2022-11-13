@@ -1,4 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserScore } from "../../utils/services/postApiService";
 import { getUserScoreMocked } from "../../utils/mock/mockedAPI";
 import { PieChart, Pie, Cell } from "recharts";

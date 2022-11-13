@@ -1,4 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserDailyActivity } from "../../utils/services/postApiService";
 import { getUserDailyActivityMocked } from "../../utils/mock/mockedAPI.js";
 import {
@@ -69,12 +69,7 @@ function DailyActivityChart({ id }) {
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={activities}
-          barGap={5}
-          barCategoryGap={25}
-          strokeDasharray="1 4"
-        >
+        <BarChart data={activities} barGap={5} strokeDasharray="1 4">
           <CartesianGrid vertical={false} />
           <YAxis
             type="number"
@@ -86,12 +81,7 @@ function DailyActivityChart({ id }) {
             tick={{ fontSize: 12 }}
             stroke="#74798C"
           />
-          <XAxis
-            tickLine={false}
-            axisLine={false}
-            tick={{ fontSize: 12 }}
-            stroke="#74798C"
-          />
+          <XAxis dataKey="day" />
           <Tooltip
             wrapperStyle={{ top: -50, left: 10 }}
             content={<CustomTooltip />}

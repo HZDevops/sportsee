@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useSportSeeApi } from "../../utils/callAPI.js/useSportSeeApi";
+import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
 import { getUserFirstname } from "../../utils/services/postApiService";
 import { getUserMainDataMocked } from "../../utils/mock/mockedAPI.js";
 
@@ -33,7 +33,6 @@ function Dashboard() {
   return (
     <main>
       <HeaderDashboard firstname={userFirstname} />
-
       <section className="charts">
         <DailyActivityChart id={userId} />
         <div className="specific-charts">
