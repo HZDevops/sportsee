@@ -1,4 +1,4 @@
-# Getting Started with SportSee App
+# SportSee Application : React analytics dashboard
 
 This project's purpose is the creation of a user profile page with React. This page integrates graphs of the sports activity of the user. 
 A backend using Node.js is provided to allow HTTP calls and retrieve example data.
