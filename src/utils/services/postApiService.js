@@ -15,7 +15,6 @@ export function getUserFirstname(data) {
  * @returns {Array} - user's daily activities
  */
 export function getUserDailyActivity(data) {
-  //return data?.data?.sessions;
   const dailyActivity = [];
 
   data?.data?.sessions.forEach((element) => {
@@ -93,7 +92,7 @@ export function getUserKeydata(data) {
 /**
  * Get user score information from data API
  * @param {Array} data - user's main data from API
- * @returns {Object} - user keydata
+ * @returns {Number} - user score
  */
 export function getUserScore(data) {
   if (data?.data?.todayScore) {

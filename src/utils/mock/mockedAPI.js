@@ -6,9 +6,9 @@ import {
 } from "./mockedData";
 
 /**
- * Get user main information from data API
+ * Get user firstname from mocked data
  * @param {String} userId - user id
- * @returns {Object} - user main information
+ * @returns {StringObject} - user firstname
  */
 export function getUserFirstname(userId) {
   for (let user of USER_MAIN_DATA) {
@@ -36,7 +36,7 @@ export function getUserKeydataMocked(userId) {
 /**
  * Get user score from mocked data
  * @param {String} userId - user id
- * @returns {Object} - user's score
+ * @returns {Number} - user's score
  */
 export function getUserScoreMocked(userId) {
   for (let user of USER_MAIN_DATA) {
@@ -56,12 +56,24 @@ export function getUserScoreMocked(userId) {
  * @returns {Array} - user's daily activities
  */
 export function getUserDailyActivityMocked(userId) {
+  const dailyActivity = [];
+  let sessions = [];
+
   for (let user of USER_ACTIVITY) {
     if (user.userId === parseInt(userId)) {
-      let sessions = user.sessions;
-      return sessions;
+      sessions = user.sessions;
     }
   }
+  sessions.forEach((element) => {
+    const [yyyy, mm, dd] = element.day.split("-");
+
+    dailyActivity.push({
+      day: `${dd}`,
+      kilogram: element.kilogram,
+      calories: element.calories,
+    });
+  });
+  return dailyActivity;
 }
 
 /**
@@ -70,11 +82,24 @@ export function getUserDailyActivityMocked(userId) {
  * @returns {Array} - user's average sessions
  */
 export function getUserAverageSessionsMocked(userId) {
+  let sessions = [];
+
   for (let user of USER_AVERAGE_SESSIONS) {
     if (user.userId === parseInt(userId)) {
-      return user.sessions;
+      sessions = user.sessions;
     }
   }
+
+  // replace the number index with the day index
+  const days = { 1: "L", 2: "M", 3: "M", 4: "J", 5: "V", 6: "S", 7: "D" };
+  if (sessions) {
+    for (let element of sessions) {
+      if (element.day in days) {
+        element.day = days[element.day];
+      }
+    }
+  }
+  return sessions;
 }
 
 /**

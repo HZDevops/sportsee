@@ -40,7 +40,7 @@ function SessionDurationChart({ id }) {
   const sessions = getUserAverageSessions(data);
 
   //Extract sessions from mocked data
-  //const sessions = getUserAverageSessionsMocked(userId);
+  //const sessions = getUserAverageSessionsMocked(id);
 
   return (
     <div className="average-duration-chart">

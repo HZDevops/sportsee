@@ -23,14 +23,14 @@ function ScoreChart({ id }) {
   //Extract score from mocked data
   //const score = getUserScoreMocked(id);
 
-  const pieData = [{ name: "completed", value: score, fill: "#FF0101" }];
+  const pieData = [{ name: "completed", value: score, fillColor: "#FF0101" }];
 
   return (
     <div className="score-chart">
       <PieChart width={258} height={263}>
+        <circle cx={130} cy={135} r={75} fill="#FFFFFF" />
         <Pie
           data={pieData}
-          title="test"
           startAngle={90}
           endAngle={90 + score * 360}
           innerRadius={70}
@@ -38,7 +38,13 @@ function ScoreChart({ id }) {
           paddingAngle={5}
           dataKey="value"
         >
-          <Cell fill="#FF0000" cornerRadius="50%" />
+          {pieData.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={entry.fillColor}
+              cornerRadius="50%"
+            />
+          ))}
         </Pie>
       </PieChart>
       <div className="score-content">
