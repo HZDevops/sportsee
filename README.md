@@ -12,7 +12,7 @@ A backend using Node.js is provided to allow HTTP calls and retrieve example dat
 Micro API for the sports analytics dashboard SportSee.
 
 ### 2.1 Installation
-    - Clone this repository on your computer git clone
+    - Clone this repository on your computer git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
     - Go to the project folder cd backend
     - Install all dependencies you need for running the backend with command "npm install"
 
