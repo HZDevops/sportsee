@@ -12,7 +12,7 @@ A backend using Node.js is provided to allow HTTP calls and retrieve example dat
 Micro API for the sports analytics dashboard SportSee.
 
 ### 2.1 Installation
-    - Clone this repository on your computer git clone https://github.com/HZDevops/sportsee.git
+    - Clone this repository on your computer git clone
     - Go to the project folder cd backend
     - Install all dependencies you need for running the backend with command "npm install"
 
@@ -22,7 +22,7 @@ Warning, currently only two users have been mocked. They have userId 12 and 18 r
 ## 3. API frontend Sportsee
 
 ### 3.2 Installation
-    - Clone this repository on your computer git clone https://github.com/Poccardl/LoicPoccard_12_27032021.git
+    - Clone this repository on your computer git clone https://github.com/HZDevops/sportsee.git
     - Go to the project folder cd sportsee
     - Install all dependencies you need for running this api with command "npm install"
 
