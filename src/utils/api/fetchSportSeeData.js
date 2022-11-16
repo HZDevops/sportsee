@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 export function useSportSeeApiMainData(userId) {
   //State initialisation
   const [userMainData, setData] = useState({});
-  const [error, setError] = useState(false);
+  const [userError, setUserError] = useState(false);
 
   useEffect(() => {
     axios
@@ -19,12 +19,11 @@ export function useSportSeeApiMainData(userId) {
         setData(response.data);
       })
       .catch((error) => {
-        console.error("Error: ", error);
-        setError(error);
+        setUserError(error);
       });
   }, [userId]);
 
-  return { userMainData, error };
+  return { userMainData, userError };
 }
 
 /**
@@ -35,6 +34,7 @@ export function useSportSeeApiMainData(userId) {
 
 export function useSportSeeApiActivity(userId) {
   const [activityData, setActivityData] = useState({});
+  const [activityError, setActivityError] = useState(false);
 
   useEffect(() => {
     axios
@@ -43,11 +43,11 @@ export function useSportSeeApiActivity(userId) {
         setActivityData(response.data);
       })
       .catch((error) => {
-        console.error("Error: ", error);
+        setActivityError(error);
       });
   }, [userId]);
 
-  return { activityData };
+  return { activityData, activityError };
 }
 
 /**
@@ -58,6 +58,7 @@ export function useSportSeeApiActivity(userId) {
 
 export function useSportSeeApiSessions(userId) {
   const [sessionData, setSessionData] = useState({});
+  const [sessionError, setSessionError] = useState(false);
 
   useEffect(() => {
     axios
@@ -66,11 +67,11 @@ export function useSportSeeApiSessions(userId) {
         setSessionData(response.data);
       })
       .catch((error) => {
-        console.error("Error: ", error);
+        setSessionError(error);
       });
   }, [userId]);
 
-  return { sessionData };
+  return { sessionData, sessionError };
 }
 
 /**
@@ -81,6 +82,7 @@ export function useSportSeeApiSessions(userId) {
 
 export function useSportSeeApiPerformance(userId) {
   const [performanceData, setPerformanceData] = useState({});
+  const [performanceError, setPerformanceError] = useState(false);
 
   useEffect(() => {
     axios
@@ -89,9 +91,9 @@ export function useSportSeeApiPerformance(userId) {
         setPerformanceData(response.data);
       })
       .catch((error) => {
-        console.error("Error: ", error);
+        setPerformanceError(error);
       });
   }, [userId]);
 
-  return { performanceData };
+  return { performanceData, performanceError };
 }

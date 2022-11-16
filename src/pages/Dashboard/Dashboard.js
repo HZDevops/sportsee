@@ -36,7 +36,7 @@ function Dashboard() {
   let { userId } = useParams();
 
   //Get user main data from SportSee API
-  const { userMainData, error } = useSportSeeApiMainData(userId);
+  const { userMainData, userError } = useSportSeeApiMainData(userId);
 
   //Get user daily activities data from SportSee API
   const { activityData } = useSportSeeApiActivity(userId);
@@ -47,7 +47,7 @@ function Dashboard() {
   //Get performance data from SportSee API
   const { performanceData } = useSportSeeApiPerformance(userId);
 
-  if (error) {
+  if (userError) {
     return (
       <main>
         <Error404 />
