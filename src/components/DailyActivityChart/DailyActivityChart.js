@@ -1,6 +1,3 @@
-import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
-import { getUserDailyActivity } from "../../utils/services/postApiService";
-import { getUserDailyActivityMocked } from "../../utils/mock/mockedAPI.js";
 import {
   BarChart,
   Bar,
@@ -11,7 +8,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Error404 from "../../pages/Error404/Error404";
 import "./DailyActivityChart.css";
 
 /**
@@ -47,29 +43,12 @@ const CustomLegendText = (value) => {
   );
 };
 
-function DailyActivityChart({ id }) {
-  //Get daily activities data from SportSee API
-  const { data, error } = useSportSeeApi(id, "activity");
-
-  if (error) {
-    return (
-      <div className="activity-chart">
-        <Error404 />
-      </div>
-    );
-  }
-
-  //Extract activities from API data
-  const activities = getUserDailyActivity(data);
-
-  //Extract activities from mocked data
-  //const activities = getUserDailyActivityMocked(id);
-
+function DailyActivityChart({ activities }) {
   return (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={activities} barGap={5} strokeDasharray="1 4">
+        <BarChart data={activities} barGap={8}>
           <CartesianGrid vertical={false} />
           <YAxis
             type="number"

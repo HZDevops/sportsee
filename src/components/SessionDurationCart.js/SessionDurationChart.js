@@ -1,8 +1,4 @@
-import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
-import { getUserAverageSessions } from "../../utils/services/postApiService";
-import { getUserAverageSessionsMocked } from "../../utils/mock/mockedAPI.js";
 import { LineChart, XAxis, Line, Tooltip } from "recharts";
-import Error404 from "../../pages/Error404/Error404";
 import "./SessionDurationChart.css";
 
 /**
@@ -24,24 +20,7 @@ function CustomTooltip({ payload, active }) {
   return null;
 }
 
-function SessionDurationChart({ id }) {
-  //Get average sessions data from SportSee API
-  const { data, error } = useSportSeeApi(id, "average-sessions");
-
-  if (error) {
-    return (
-      <div className="average-duration-chart">
-        <Error404 />
-      </div>
-    );
-  }
-
-  //Extract user sessions from API data
-  const sessions = getUserAverageSessions(data);
-
-  //Extract sessions from mocked data
-  //const sessions = getUserAverageSessionsMocked(id);
-
+function SessionDurationChart({ sessions }) {
   return (
     <div className="average-duration-chart">
       <h2>Durée moyenne des sessions</h2>

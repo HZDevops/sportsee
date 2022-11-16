@@ -1,27 +1,7 @@
-import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
-import { getUserPerformance } from "../../utils/services/postApiService";
-import { getUserPerformanceMocked } from "../../utils/mock/mockedAPI.js";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
-import Error404 from "../../pages/Error404/Error404";
 import "./PerformanceChart.css";
 
-function PerformanceChart({ id }) {
-  const { data, error } = useSportSeeApi(id, "performance");
-
-  if (error) {
-    return (
-      <div className="radar-bar-chart">
-        <Error404 />
-      </div>
-    );
-  }
-
-  //Get user performances from API data
-  const performances = getUserPerformance(data);
-
-  //Extract performances from mocked data
-  //const performances = getUserPerformanceMocked(id);
-
+function PerformanceChart({ performance }) {
   return (
     <div className="radar-bar-chart">
       <RadarChart
@@ -30,7 +10,7 @@ function PerformanceChart({ id }) {
         cx="50%"
         cy="50%"
         outerRadius="70%"
-        data={performances}
+        data={performance}
       >
         <PolarGrid />
         <PolarAngleAxis tickLine={false} stroke="white" dataKey="kind" />

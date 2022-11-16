@@ -1,28 +1,7 @@
-import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
-import { getUserScore } from "../../utils/services/postApiService";
-import { getUserScoreMocked } from "../../utils/mock/mockedAPI";
 import { PieChart, Pie, Cell } from "recharts";
-import Error404 from "../../pages/Error404/Error404";
 import "./ScoreChart.css";
 
-function ScoreChart({ id }) {
-  //Get score data from SportSee API
-  const { data, error } = useSportSeeApi(id);
-
-  if (error) {
-    return (
-      <div className="radar-bar-chart">
-        <Error404 />
-      </div>
-    );
-  }
-
-  //Extract user score from API data
-  const score = getUserScore(data);
-
-  //Extract score from mocked data
-  //const score = getUserScoreMocked(id);
-
+function ScoreChart({ score }) {
   const pieData = [{ name: "completed", value: score, fillColor: "#FF0101" }];
 
   return (

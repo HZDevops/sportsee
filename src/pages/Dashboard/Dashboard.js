@@ -1,7 +1,26 @@
 import { useParams } from "react-router-dom";
-import { useSportSeeApi } from "../../utils/callAPI/useSportSeeApi";
-import { getUserFirstname } from "../../utils/services/postApiService";
-import { getUserMainDataMocked } from "../../utils/mock/mockedAPI.js";
+import {
+  useSportSeeApiMainData,
+  useSportSeeApiActivity,
+  useSportSeeApiSessions,
+  useSportSeeApiPerformance,
+} from "../../utils/api/fetchSportSeeData";
+import {
+  getUserFirstname,
+  getUserDailyActivity,
+  getUserAverageSessions,
+  getUserPerformance,
+  getUserScore,
+  getUserKeydata,
+} from "../../utils/services/postApiService";
+import {
+  getUserMainDataMocked,
+  getUserDailyActivityMocked,
+  getUserAverageSessionsMocked,
+  getUserPerformanceMocked,
+  getUserScoreMocked,
+  getUserKeydataMocked,
+} from "../../utils/mock/mockedAPI.js";
 
 import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
@@ -17,7 +36,16 @@ function Dashboard() {
   let { userId } = useParams();
 
   //Get user main data from SportSee API
-  const { data, error } = useSportSeeApi(userId);
+  const { userMainData, error } = useSportSeeApiMainData(userId);
+
+  //Get user daily activities data from SportSee API
+  const { activityData } = useSportSeeApiActivity(userId);
+
+  //Get average-sessions data from SportSee API
+  const { sessionData } = useSportSeeApiSessions(userId);
+
+  //Get performance data from SportSee API
+  const { performanceData } = useSportSeeApiPerformance(userId);
 
   if (error) {
     return (
@@ -27,21 +55,51 @@ function Dashboard() {
     );
   }
 
-  //Get user firstname from API data
-  const userFirstname = getUserFirstname(data);
+  //Extract user firstname from API data
+  const userFirstname = getUserFirstname(userMainData);
+
+  //Extract activities from API data
+  const userActivities = getUserDailyActivity(activityData);
+
+  //Extract user sessions from API data
+  const userSessions = getUserAverageSessions(sessionData);
+
+  //Extract user performances from API data
+  const userPerformance = getUserPerformance(performanceData);
+
+  //Extract user score from API data
+  const userScore = getUserScore(userMainData);
+
+  //Extract user keydata from API data
+  const userKeydata = getUserKeydata(userMainData);
+
+  //Extract activities from mocked data
+  //const userActivities = getUserDailyActivityMocked(userId);
+
+  //Extract sessions from mocked data
+  //const userSessions = getUserAverageSessionsMocked(userId);
+
+  //Extract performances from mocked data
+  //const userPerformance = getUserPerformanceMocked(userId);
+
+  //Extract score from mocked data
+  //const userScore = getUserScoreMocked(userId);
+
+  //Extract keydata from mocked data
+  //const userKeydata = getUserKeydataMocked(userId);
 
   return (
     <main>
       <HeaderDashboard firstname={userFirstname} />
       <section className="charts">
-        <DailyActivityChart id={userId} />
+        <DailyActivityChart activities={userActivities} />
         <div className="specific-charts">
-          <SessionDurationChart id={userId} />
-          <PerformanceChart id={userId} />
-          <ScoreChart id={userId} />
+          <SessionDurationChart sessions={userSessions} />
+          <PerformanceChart performance={userPerformance} />
+          <ScoreChart score={userScore} />
         </div>
       </section>
-      <KeyDataCard id={userId} />
+      <KeyDataCard keydata={userKeydata} />
     </main>
   );
 }
