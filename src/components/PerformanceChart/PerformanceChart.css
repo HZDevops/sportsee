@@ -1,6 +1,7 @@
 .radar-bar-chart {
     background-color: #282D30;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 .radar-bar-chart text {

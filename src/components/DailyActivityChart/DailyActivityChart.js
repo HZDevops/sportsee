@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   BarChart,
   Bar,
@@ -11,7 +12,7 @@ import {
 import "./DailyActivityChart.css";
 
 /**
- * Custom tooltip of BarChart
+ * Custom tooltip for BarChart
  * @param {object} {payload
  * @param {boolean} active} - Content tooltip object
  * @returns {Component} - React component
@@ -94,4 +95,9 @@ function DailyActivityChart({ activities }) {
     </div>
   );
 }
+
+DailyActivityChart.propTypes = {
+  activities: PropTypes.array,
+};
+
 export default DailyActivityChart;

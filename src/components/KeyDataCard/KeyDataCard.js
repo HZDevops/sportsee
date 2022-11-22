@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import caloriesIcon from "../../assets/calories-icon.png";
 import carbsIcon from "../../assets/carbs-icon.png";
 import fatIcon from "../../assets/fat-icon.png";
@@ -38,4 +39,9 @@ function KeyDataCard({ keydata }) {
     </div>
   );
 }
+
+KeyDataCard.propTypes = {
+  keydata: PropTypes.object,
+};
+
 export default KeyDataCard;

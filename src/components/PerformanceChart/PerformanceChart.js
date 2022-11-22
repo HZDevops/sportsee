@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
 import "./PerformanceChart.css";
 
@@ -19,4 +20,9 @@ function PerformanceChart({ performance }) {
     </div>
   );
 }
+
+PerformanceChart.propTypes = {
+  performance: PropTypes.array,
+};
+
 export default PerformanceChart;

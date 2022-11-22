@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { PieChart, Pie, Cell } from "recharts";
 import "./ScoreChart.css";
 
@@ -37,4 +38,9 @@ function ScoreChart({ score }) {
     </div>
   );
 }
+
+ScoreChart.propTypes = {
+  score: PropTypes.number,
+};
+
 export default ScoreChart;

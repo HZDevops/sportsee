@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { LineChart, XAxis, Line, Tooltip } from "recharts";
 import "./SessionDurationChart.css";
 
@@ -48,4 +49,9 @@ function SessionDurationChart({ sessions }) {
     </div>
   );
 }
+
+SessionDurationChart.propTypes = {
+  session: PropTypes.array,
+};
+
 export default SessionDurationChart;

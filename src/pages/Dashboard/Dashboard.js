@@ -4,7 +4,7 @@ import {
   useSportSeeApiActivity,
   useSportSeeApiSessions,
   useSportSeeApiPerformance,
-} from "../../utils/api/fetchSportSeeData";
+} from "../../utils/api/callSportSeeApi";
 import {
   getUserFirstname,
   getUserDailyActivity,

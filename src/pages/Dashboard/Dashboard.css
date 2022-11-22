@@ -1,11 +1,10 @@
 .charts {
     width: 835px;
-    display: flex;
-    flex-direction: column;
+    /*display: flex;
+    flex-direction: column;*/
 }
 
 .specific-charts{
     display: flex;
-    position: relative;
-    top: 100px;
+    margin-top: 30px;
 }
