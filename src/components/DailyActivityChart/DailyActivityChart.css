@@ -3,6 +3,7 @@
     height: 320px;
     position: relative;
     margin-left: 175px;
+    padding: auto;
     background: #FBFBFB;
     border-radius: 5px;
 }

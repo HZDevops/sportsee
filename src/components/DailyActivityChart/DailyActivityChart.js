@@ -48,20 +48,32 @@ function DailyActivityChart({ activities }) {
   return (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={activities} barGap={8}>
-          <CartesianGrid vertical={false} />
+      <ResponsiveContainer width="90%">
+        <BarChart data={activities} barGap={8} margin={{ left: 48 }}>
+          <CartesianGrid
+            vertical={false}
+            strokeDasharray="3 3"
+            stroke="#DEDEDE"
+          />
+          <XAxis
+            dataKey="day"
+            stroke="#74798C"
+            tickLine={false}
+            padding={{ left: -48, right: -48 }}
+          />
           <YAxis
-            type="number"
             tickCount={3}
             tickLine={false}
-            dataKey="calories"
+            dataKey="kilogram"
             axisLine={false}
+            dx={30}
             orientation="right"
-            tick={{ fontSize: 12 }}
+            domain={["dataMin - 1", "dataMax + 2"]}
+            tick={{ fontSize: 14 }}
             stroke="#74798C"
           />
-          <XAxis dataKey="day" />
+          <YAxis dataKey="calories" domain={[0, "dataMax + 50"]} hide={true} />
+
           <Tooltip
             wrapperStyle={{ top: -50, left: 10 }}
             content={<CustomTooltip />}
@@ -77,18 +89,18 @@ function DailyActivityChart({ activities }) {
           />
           <Bar
             name="Poids (kg)"
+            barSize={8}
             radius={[10, 10, 0, 0]}
-            stroke-linejoin={10}
-            barSize={10}
             dataKey="kilogram"
             fill="#282D30"
           />
           <Bar
             name="Calories brûlées (kCal)"
+            barSize={8}
             radius={[10, 10, 0, 0]}
-            barSize={10}
             dataKey="calories"
             fill="#E60000"
+            maxBarSize={10}
           />
         </BarChart>
       </ResponsiveContainer>

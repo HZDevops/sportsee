@@ -11,7 +11,7 @@ function KeyDataCard({ keydata }) {
       <div className="keydata-card">
         <img className="icon" src={caloriesIcon} alt="calorie icon" />
         <div className="keydata-content">
-          <p>{keydata?.calorieCount / 1000}kCal</p>
+          <p>{keydata?.calorieCount.toLocaleString("en-US")}kCal</p>
           <span>Calories</span>
         </div>
       </div>

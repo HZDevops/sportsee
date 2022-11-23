@@ -8,17 +8,23 @@
 .sportsee-logo {
     height: 60.93379592895508px;
     width: 177.99717712402344px;
-    margin: 19px 29px;
+    margin: 19px;
 }
 
 .horizontal-navbar {
     display: flex;
     align-items: center;
-    margin-left: 149px;
+    margin-left: 20px;
 }
 
 .sportsee-link {
-    width:250px;
+    min-width: 200px;
     color: #FFFFFF;
     text-decoration: none;
+}
+
+@media screen and (min-width: 1100px) {
+    .horizontal-navbar {
+        margin-left: 149px;
+    }
 }

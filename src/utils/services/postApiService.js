@@ -17,11 +17,9 @@ export function getUserFirstname(data) {
 export function getUserDailyActivity(data) {
   const dailyActivity = [];
 
-  data?.data?.sessions.forEach((element) => {
-    const [yyyy, mm, dd] = element.day.split("-");
-
+  data?.data?.sessions.forEach((element, index) => {
     dailyActivity.push({
-      day: `${dd}`,
+      day: index + 1,
       kilogram: element.kilogram,
       calories: element.calories,
     });
@@ -74,8 +72,38 @@ export function getUserPerformance(data) {
       });
     });
 
-    return activities;
+    return getOrderedActivities(activities);
   }
+}
+
+/**
+ * Get user kind activities ordered
+ * @param {Array} activities -
+ * @returns {Array} - user's redered activities
+ */
+function getOrderedActivities(activities) {
+  const ACTIVITIES_ORDER_FOR_CHART = [
+    "Intensité",
+    "Vitesse",
+    "Force",
+    "Endurance",
+    "Energie",
+    "Cardio",
+  ];
+
+  const orderedActivities = [];
+
+  for (let activity of ACTIVITIES_ORDER_FOR_CHART) {
+    for (let item of activities) {
+      if (item.kind === activity) {
+        orderedActivities.push({
+          kind: activity,
+          value: item.value,
+        });
+      }
+    }
+  }
+  return orderedActivities;
 }
 
 /**
