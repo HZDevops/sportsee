@@ -1,19 +1,18 @@
 .activity-chart {
     grid-row: 1;
+    grid-column: 2;
     width:835px;
     height: 320px;
-    margin-top: 200px;
+    margin-top: 170px;
     margin-left: 50px;
     background: #FBFBFB;
     border-radius: 5px;
-    grid-column: 2;
-
 }
 
 .activity-chart  h2 {
     position: absolute;
-    top: 20px;
-    left: 20px;    
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 .daily-chart-tooltip {
@@ -21,6 +20,10 @@
     color: white;
     font-size: 8px;
     padding: 2.5px;
+}
+
+.recharts-wrapper {
+    width:800px;
 }
 
 .daily-chart-tooltip p {

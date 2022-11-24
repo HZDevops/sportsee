@@ -48,7 +48,7 @@ function DailyActivityChart({ activities }) {
   return (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
-      <ResponsiveContainer width="91%">
+      <ResponsiveContainer width="95%" height="95%">
         <BarChart
           data={activities}
           barGap={8}
@@ -73,7 +73,8 @@ function DailyActivityChart({ activities }) {
             tickLine={false}
             dataKey="kilogram"
             axisLine={false}
-            dx={48}
+            dx={30}
+            padding={{ left: -48, right: -48 }}
             orientation="right"
             domain={["dataMin - 1", "dataMax + 2"]}
             tick={{ fontSize: 14 }}
