@@ -22,11 +22,21 @@
     padding: 2.5px;
 }
 
-.recharts-wrapper {
-    width:800px;
-}
-
 .daily-chart-tooltip p {
     padding: 2.5px;
 }
 
+@media screen and (max-width: 1200px) {
+    .activity-chart {
+        width:660px;
+        margin-left: 2%;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 14px;
+    }
+}

@@ -63,8 +63,8 @@ function DailyActivityChart({ activities }) {
           <XAxis
             dataKey="day"
             stroke="#74798C"
+            padding={{ left: -40, right: -40 }}
             tickLine={false}
-            padding={{ left: -48, right: -48 }}
           />
           <YAxis
             type="number"
@@ -74,7 +74,6 @@ function DailyActivityChart({ activities }) {
             dataKey="kilogram"
             axisLine={false}
             dx={30}
-            padding={{ left: -48, right: -48 }}
             orientation="right"
             domain={["dataMin - 1", "dataMax + 2"]}
             tick={{ fontSize: 14 }}

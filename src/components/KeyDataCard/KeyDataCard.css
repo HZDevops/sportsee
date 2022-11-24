@@ -9,7 +9,7 @@
 }
 
 .keydata-card {
-    width:258px;
+    width:218px;
     height: 124px;
     border-radius:5px;
     display: flex;
@@ -20,7 +20,7 @@
 }
 
 .keydata-content {
-    margin: 0px 60px 0px 10px;
+    margin: 0 0 0 10px;
 }
 
 .keydata-content p {
@@ -31,4 +31,16 @@
 
 .keydata-content span {
     color:#74798C;
+}
+
+@media screen and (max-width: 1200px) {
+    .keydata-container {
+        left: 690px;
+        width: 200px;
+    }
+
+    .keydata-card {
+        width:200px;
+    }
+
 }

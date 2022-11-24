@@ -35,7 +35,7 @@ export function getUserDailyActivity(data) {
 export function getUserAverageSessions(data) {
   let sessions = data?.data?.sessions;
 
-  // replace the number index with the day index
+  // replace the number index by the day index
   const days = { 1: "L", 2: "M", 3: "M", 4: "J", 5: "V", 6: "S", 7: "D" };
   if (sessions) {
     for (let element of sessions) {
@@ -65,6 +65,7 @@ export function getUserPerformance(data) {
   const activities = [];
 
   if (data) {
+    // replace the english activity index by the french activity index
     data.data?.data?.forEach((element) => {
       activities.push({
         kind: ACTIVITY_BY_KIND[element.kind],
@@ -79,7 +80,7 @@ export function getUserPerformance(data) {
 /**
  * Get user kind activities ordered
  * @param {Array} activities -
- * @returns {Array} - user's redered activities
+ * @returns {Array} - user's ordered activities
  */
 function getOrderedActivities(activities) {
   const ACTIVITIES_ORDER_FOR_CHART = [

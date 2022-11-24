@@ -7,7 +7,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import HorizontalNavigation from "./components/HorizontalNavigation/HorizontalNavigation";
-import VerticalNavigation from "./components/VerticalNavigation/VerticalNavigation";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Error404 from "./pages/Error404/Error404";
 import "./index.css";
@@ -17,7 +16,6 @@ root.render(
   <React.StrictMode>
     <Router>
       <HorizontalNavigation />
-
       <Routes>
         <Route exact path="/" element={<Navigate to="/12" />} />
         <Route path="/:userId" element={<Dashboard />} />

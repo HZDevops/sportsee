@@ -14,3 +14,9 @@
 .first-name {
     color:#FF0000;
 }
+
+@media screen and (max-width: 1200px) {
+    .header-dashboard {
+        margin-left: 2%;
+    }
+}

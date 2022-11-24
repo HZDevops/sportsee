@@ -18,3 +18,13 @@ main {
     width: 258px;
     height: 263px;
 }
+
+@media screen and (max-width: 1200px) {
+    .charts {
+        width: 200px;
+    }
+
+    .specific-charts {
+        right: 205px;
+    }
+}
