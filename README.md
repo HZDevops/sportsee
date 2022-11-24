@@ -15,6 +15,7 @@ Micro API for the sports analytics dashboard SportSee.
     - Clone this repository on your computer git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git
     - Go to the project folder cd backend
     - Install all dependencies you need for running the backend with command "npm install"
+    - Run backend with npm start
 
 ### 2.2 Warning
 Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.
@@ -27,6 +28,6 @@ Warning, currently only two users have been mocked. They have userId 12 and 18 r
     - Install all dependencies you need for running this api with command "npm install"
 
 ### 3.3 Run the project
-    Run project npm start
-    Open your browser (localhost:3000 port by default)
+    - Run project with yarn start
+    - Open your browser (localhost:3000 port by default)
 
