@@ -14,7 +14,7 @@ import {
   getUserKeydata,
 } from "../../utils/services/postApiService";
 import {
-  getUserMainDataMocked,
+  getUserFirstnameMocked,
   getUserDailyActivityMocked,
   getUserAverageSessionsMocked,
   getUserPerformanceMocked,
@@ -74,6 +74,9 @@ function Dashboard() {
 
   //Extract user keydata from API data
   const userKeydata = getUserKeydata(userMainData);
+
+  //Extract activities from mocked data
+  //const userFirstname = getUserFirstnameMocked(userId);
 
   //Extract activities from mocked data
   //const userActivities = getUserDailyActivityMocked(userId);

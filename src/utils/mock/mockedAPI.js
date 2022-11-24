@@ -10,7 +10,7 @@ import {
  * @param {String} userId - user id
  * @returns {StringObject} - user firstname
  */
-export function getUserFirstname(userId) {
+export function getUserFirstnameMocked(userId) {
   for (let user of USER_MAIN_DATA) {
     if (user.id === parseInt(userId)) {
       let firstname = user.userInfos.firstName;
@@ -64,11 +64,9 @@ export function getUserDailyActivityMocked(userId) {
       sessions = user.sessions;
     }
   }
-  sessions.forEach((element) => {
-    const [yyyy, mm, dd] = element.day.split("-");
-
+  sessions.forEach((element, index) => {
     dailyActivity.push({
-      day: `${dd}`,
+      day: index + 1,
       kilogram: element.kilogram,
       calories: element.calories,
     });

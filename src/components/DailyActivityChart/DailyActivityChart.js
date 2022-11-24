@@ -49,12 +49,7 @@ function DailyActivityChart({ activities }) {
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
       <ResponsiveContainer width="95%" height="95%">
-        <BarChart
-          data={activities}
-          barGap={8}
-          barCategoryGap={25}
-          margin={{ left: 48 }}
-        >
+        <BarChart data={activities} barGap={8} margin={{ left: 48 }}>
           <CartesianGrid
             vertical={false}
             strokeDasharray="3 3"
