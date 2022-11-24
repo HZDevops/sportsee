@@ -1,8 +1,10 @@
 .header-dashboard {
     width: 414px;
-    margin-bottom: 40px;
-    margin-left: 175px;
+    grid-row: 1;
+    grid-column: 2;
+    height: min-content;
     margin-top: 50px;
+    margin-left: 50px;
 }
 
 .header-dashboard h1 {

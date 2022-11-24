@@ -10,13 +10,13 @@ import "./PerformanceChart.css";
 
 function PerformanceChart({ performance }) {
   return (
-    <div className="radar-bar-chart">
+    <div className="radar-bar-chart charts">
       <RadarChart width={253} height={268} data={performance}>
         <PolarGrid radialLines={false} />
         <PolarAngleAxis
           tickLine={false}
           stroke="white"
-          dy={3}
+          dy={4}
           tick={{
             fontSize: 10,
             fontWeight: 500,

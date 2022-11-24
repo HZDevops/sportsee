@@ -127,7 +127,37 @@ export function getUserPerformanceMocked(userId) {
           value: element.value,
         });
       });
-      return activities;
+      return getOrderedActivities(activities);
     }
   }
+}
+
+/**
+ * Get user kind activities ordered
+ * @param {Array} activities -
+ * @returns {Array} - user's redered activities
+ */
+function getOrderedActivities(activities) {
+  const ACTIVITIES_ORDER_FOR_CHART = [
+    "Intensité",
+    "Vitesse",
+    "Force",
+    "Endurance",
+    "Energie",
+    "Cardio",
+  ];
+
+  const orderedActivities = [];
+
+  for (let activity of ACTIVITIES_ORDER_FOR_CHART) {
+    for (let item of activities) {
+      if (item.kind === activity) {
+        orderedActivities.push({
+          kind: activity,
+          value: item.value,
+        });
+      }
+    }
+  }
+  return orderedActivities;
 }

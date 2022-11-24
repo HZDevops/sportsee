@@ -23,7 +23,7 @@ function CustomTooltip({ payload, active }) {
 
 function SessionDurationChart({ sessions }) {
   return (
-    <div className="average-duration-chart">
+    <div className="average-duration-chart charts">
       <h2>Durée moyenne des sessions</h2>
       <LineChart data={sessions} width={253} height={268}>
         <Tooltip

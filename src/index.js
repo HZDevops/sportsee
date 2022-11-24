@@ -17,7 +17,7 @@ root.render(
   <React.StrictMode>
     <Router>
       <HorizontalNavigation />
-      <VerticalNavigation />
+
       <Routes>
         <Route exact path="/" element={<Navigate to="/12" />} />
         <Route path="/:userId" element={<Dashboard />} />

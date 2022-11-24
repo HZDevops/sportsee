@@ -1,10 +1,11 @@
 .keydata-container {
-    position: relative;
-    margin-left: 31px;
-    bottom: 618px;
-    left: 1000px;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 200px;
     height: 600px;
     width: 300px;
+    position: relative;
+    left: 910px;
 }
 
 .keydata-card {

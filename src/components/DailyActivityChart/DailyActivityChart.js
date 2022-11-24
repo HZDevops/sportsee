@@ -48,8 +48,13 @@ function DailyActivityChart({ activities }) {
   return (
     <div className="activity-chart">
       <h2>Activité quotidienne</h2>
-      <ResponsiveContainer width="90%">
-        <BarChart data={activities} barGap={8} margin={{ left: 48 }}>
+      <ResponsiveContainer width="91%">
+        <BarChart
+          data={activities}
+          barGap={8}
+          barCategoryGap={25}
+          margin={{ left: 48 }}
+        >
           <CartesianGrid
             vertical={false}
             strokeDasharray="3 3"
@@ -62,19 +67,28 @@ function DailyActivityChart({ activities }) {
             padding={{ left: -48, right: -48 }}
           />
           <YAxis
+            type="number"
+            yAxisId="kg"
             tickCount={3}
             tickLine={false}
             dataKey="kilogram"
             axisLine={false}
-            dx={30}
+            dx={48}
             orientation="right"
             domain={["dataMin - 1", "dataMax + 2"]}
             tick={{ fontSize: 14 }}
             stroke="#74798C"
           />
-          <YAxis dataKey="calories" domain={[0, "dataMax + 50"]} hide={true} />
+          <YAxis
+            yAxisId="cal"
+            dataKey="calories"
+            domain={[0, "dataMax + 50"]}
+            hide={true}
+          />
 
           <Tooltip
+            width={39}
+            height={63}
             wrapperStyle={{ top: -50, left: 10 }}
             content={<CustomTooltip />}
           />
@@ -88,6 +102,7 @@ function DailyActivityChart({ activities }) {
             verticalAlign="top"
           />
           <Bar
+            yAxisId="kg"
             name="Poids (kg)"
             barSize={8}
             radius={[10, 10, 0, 0]}
@@ -95,12 +110,12 @@ function DailyActivityChart({ activities }) {
             fill="#282D30"
           />
           <Bar
+            yAxisId="cal"
             name="Calories brûlées (kCal)"
             barSize={8}
             radius={[10, 10, 0, 0]}
             dataKey="calories"
             fill="#E60000"
-            maxBarSize={10}
           />
         </BarChart>
       </ResponsiveContainer>

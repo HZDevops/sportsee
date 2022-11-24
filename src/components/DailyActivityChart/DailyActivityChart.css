@@ -1,11 +1,13 @@
 .activity-chart {
+    grid-row: 1;
     width:835px;
     height: 320px;
-    position: relative;
-    margin-left: 175px;
-    padding: auto;
+    margin-top: 200px;
+    margin-left: 50px;
     background: #FBFBFB;
     border-radius: 5px;
+    grid-column: 2;
+
 }
 
 .activity-chart  h2 {
@@ -24,3 +26,4 @@
 .daily-chart-tooltip p {
     padding: 2.5px;
 }
+

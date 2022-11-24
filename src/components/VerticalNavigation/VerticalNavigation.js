@@ -23,7 +23,7 @@ function VerticalNavigation() {
           </li>
         </ul>
       </nav>
-      <div className="sportsee-copiryght">
+      <div className="sportsee-copyright">
         <p>Copyright, SportSee 2020</p>
       </div>
     </div>

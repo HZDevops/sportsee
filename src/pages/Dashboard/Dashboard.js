@@ -22,6 +22,7 @@ import {
   getUserKeydataMocked,
 } from "../../utils/mock/mockedAPI.js";
 
+import VerticalNavigation from "../../components/VerticalNavigation/VerticalNavigation";
 import HeaderDashboard from "../../components/HeaderDashboard/HeaderDashboard";
 import DailyActivityChart from "../../components/DailyActivityChart/DailyActivityChart";
 import SessionDurationChart from "../../components/SessionDurationCart.js/SessionDurationChart";
@@ -50,6 +51,7 @@ function Dashboard() {
   if (userError) {
     return (
       <main>
+        <VerticalNavigation />
         <Error404 />
       </main>
     );
@@ -90,15 +92,14 @@ function Dashboard() {
 
   return (
     <main>
+      <VerticalNavigation />
       <HeaderDashboard firstname={userFirstname} />
-      <section className="charts">
-        <DailyActivityChart activities={userActivities} />
-        <div className="specific-charts">
-          <SessionDurationChart sessions={userSessions} />
-          <PerformanceChart performance={userPerformance} />
-          <ScoreChart score={userScore} />
-        </div>
-      </section>
+      <DailyActivityChart activities={userActivities} />
+      <div className="specific-charts">
+        <SessionDurationChart sessions={userSessions} />
+        <PerformanceChart performance={userPerformance} />
+        <ScoreChart score={userScore} />
+      </div>
       <KeyDataCard keydata={userKeydata} />
     </main>
   );

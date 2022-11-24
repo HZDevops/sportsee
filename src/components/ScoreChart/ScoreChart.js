@@ -6,7 +6,7 @@ function ScoreChart({ score }) {
   const pieData = [{ name: "completed", value: score, fillColor: "#FF0101" }];
 
   return (
-    <div className="score-chart">
+    <div className="score-chart charts">
       <PieChart width={258} height={263}>
         <circle cx={130} cy={135} r={75} fill="#FFFFFF" />
         <Pie

@@ -1,9 +1,9 @@
 .sportsee-vertical-navbar {
+    grid-column: 1;
     display: flex;
     flex-direction: column;
     width: 117px;
     min-height: 780px;
-    position: absolute;
     background-color: black;
 }
 
@@ -30,14 +30,13 @@
     width:64px;
 }
 
-.sportsee-copiryght {
-    display: flex;
+.sportsee-copyright {
     height: 50%;
     margin-top: 160px;
     margin-bottom: 20px;
 }
 
-.sportsee-copiryght p {
+.sportsee-copyright p {
     font-size: 12px;
     color: white;
     writing-mode: vertical-rl;
